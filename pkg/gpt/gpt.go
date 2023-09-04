@@ -31,6 +31,7 @@ func processContent(content string) string {
 }
 
 func NewGPT(releaseNote string) {
+	fmt.Println(HOST)
 	ky, err := azopenai.NewKeyCredential(API_KEY)
 	if err != nil {
 		log.Fatalf("error new key credential %s", err.Error())
