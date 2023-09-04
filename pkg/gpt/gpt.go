@@ -31,7 +31,6 @@ func processContent(content string) string {
 }
 
 func NewGPT(releaseNote string) {
-	fmt.Println(HOST)
 	ky, err := azopenai.NewKeyCredential(API_KEY)
 	if err != nil {
 		log.Fatalf("error new key credential %s", err.Error())
@@ -79,14 +78,14 @@ func NewGPT(releaseNote string) {
 	choice := resp.Choices[0]
 	gotReply = true
 	content := *choice.Message.Content
-	fmt.Println(content)
+	// fmt.Println(content)
 
 	if gotReply {
 		fmt.Fprintf(os.Stderr, "Got chat completions reply\n")
 	}
 	// Split the content into English and Chinese parts
 	parts := strings.Split(content, "--------")
-	fmt.Printf("%q\n", parts)
+	// fmt.Printf("%q\n", parts)
 	// if len(parts) < 2 {
 	// 	fmt.Println("Invalid content format")
 	// 	return
