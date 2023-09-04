@@ -25,7 +25,10 @@ jobs:
       - uses: actions/setup-go@v4
         with:
             go-version: '1.20.2'
-
+      - name: Set up environment variables
+        run: |
+              echo "API_KEY=$AZURE_OPENAI_APIKEY" >> $GITHUB_ENV
+              echo "HOST=$AZURE_OPENAI_HOST" >> $GITHUB_ENV
       - name: Get release note
         run: |
             set -e
@@ -41,6 +44,6 @@ jobs:
         run: |
               API_KEY=${{ secrets.AZURE_OPENAI_APIKEY }}
               HOST=${{ secrets.AZURE_OPENAI_HOST }}
-              go run cmd/gpt/gpt.go "${{ steps.get_release_note.outputs.release-note }}" "$API_KEY" "$HOST"
+              go run cmd/gpt/gpt.go "${{ steps.get_release_note.outputs.release-note }}"
       - name: Display Changelog Contents
         run: cat CHANGELOG/CHANGELOG-v0.2.0.md | echo
