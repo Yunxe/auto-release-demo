@@ -27,8 +27,8 @@ jobs:
             go-version: '1.20.2'
       - name: Set up environment variables
         run: |
-              echo "API_KEY=$AZURE_OPENAI_APIKEY" >> $GITHUB_ENV
-              echo "HOST=$AZURE_OPENAI_HOST" >> $GITHUB_ENV
+              echo "AZURE_OPENAI_APIKEY=$AZURE_OPENAI_APIKEY" >> $GITHUB_ENV
+              echo "AZURE_OPENAI_HOST=$AZURE_OPENAI_HOST" >> $GITHUB_ENV
       - name: Get release note
         run: |
             set -e
