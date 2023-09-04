@@ -39,7 +39,7 @@ jobs:
             echo "::set-output name=release-note::$release-note"
       - name: Run Go Program
         run: |
-            go run cmd/gpt/gpt.go "${{ steps.get_release_note.outputs.release-note }}"
+            go run cmd/gpt/gpt.go "${{ steps.get_release_note.outputs.release-note }}" "${{ secrets.AZURE_OPENAI_APIKEY }}" "${{ secrets.AZURE_OPENAI_HOST }}"
 
       - name: Display Changelog Contents
         run: cat CHANGELOG/CHANGELOG-v0.2.0.md | echo
