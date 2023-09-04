@@ -36,11 +36,12 @@ jobs:
             https://api.github.com/repos/Yunxe/auto-release-demo/releases/generate-notes \
             -d '{"tag_name":"${{inputs.tag_name}}","target_commitish":"${{inputs.target_commitish}}","previous_tag_name":"${{inputs.previous_tag_name}}"}'
             echo "release-note=$release-note" >> $GITHUB_OUTPUT
-        env:
-            AZURE_OPENAI_APIKEY: ${{ secrets.AZURE_OPENAI_APIKEY }}
-            AZURE_OPENAI_HOST: ${{ secrets.AZURE_OPENAI_HOST }}
       - name: Run Go Program
         run: |
               go run cmd/gpt/gpt.go "${{ steps.get_release_note.outputs.release-note }}"
+        env:
+            AZURE_OPENAI_APIKEY: ${{ secrets.AZURE_OPENAI_APIKEY }}
+            AZURE_OPENAI_HOST: ${{ secrets.AZURE_OPENAI_HOST }}
       - name: Display Changelog Contents
         run: cat CHANGELOG/CHANGELOG-v0.2.0.md | echo
+    
