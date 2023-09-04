@@ -13,8 +13,8 @@ import (
 )
 
 var (
-	API_KEY = os.Getenv("Azure_OpenAI_APIKey")
-	HOST    = os.Getenv("Azure_Openai_Host")
+	API_KEY = os.Getenv("AZURE_OPENAI_APIKEY")
+	HOST    = os.Getenv("AZURE_OPENAI_HOST")
 )
 
 func processContent(content string) string {
