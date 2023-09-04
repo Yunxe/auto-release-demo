@@ -78,7 +78,7 @@ func NewGPT(releaseNote string) {
 	choice := resp.Choices[0]
 	gotReply = true
 	content := *choice.Message.Content
-	// fmt.Println(content)
+	fmt.Println(content)
 
 	if gotReply {
 		fmt.Fprintf(os.Stderr, "Got chat completions reply\n")
