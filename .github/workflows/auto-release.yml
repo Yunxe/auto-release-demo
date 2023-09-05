@@ -43,4 +43,11 @@ jobs:
             AZURE_OPENAI_HOST: ${{ secrets.AZURE_OPENAI_HOST }}
       - name: Display Changelog Contents
         run: cat CHANGELOG/CHANGELOG-v0.2.0.md | echo
-    
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          commit-message: update changelog
+          title: Update Changelog
+          body: Update changelog
+          branch: changelog-v0.2.0
+          base: main
